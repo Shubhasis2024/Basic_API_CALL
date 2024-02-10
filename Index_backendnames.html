@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend-Database</title>
+    <style>
+        h1{
+            background-color: rgb(73, 219, 219);
+            color: black;
+            text-shadow: 10px 5px 5px;
+            text-align: center;
+        }
+        body{
+            background-color: rgb(223, 231, 235);
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Here is the code running</h1>
+   
+        <h2 >The name of the Passenger is :-</h2>
+        <hr>
+        <h4 class="Name"></h4>
+        <hr>
+        <h2 >The user name is :-</h2>
+        <hr>
+        <h4 class="username"></h4>
+        <hr>
+        <h2>The mail id is:-</h2>
+        <h4 class="email"></h4>
+
+    <script>
+        const Name=document.querySelector(".Name");
+const Username=document.querySelector(".username");
+const email1=document.querySelector(".email");
+const getUser = async() => {
+    const userInfo = await fetch("https://jsonplaceholder.typicode.com/users")
+    const data = await userInfo.json()
+        console.log(data);
+        data.map((user,index)=>{
+            const name1=document.createElement("h4");
+           
+          name1.innerHTML=user.name;
+          name1.style.color="blue";
+          const email=document.createElement("h4");
+          email.innerHTML=user.email;
+          email.style.color="blue";
+          const username1=document.createElement("h4");
+          username1.innerHTML=user.username;
+          username1.style.color="green"
+          Name.appendChild(name1);
+        Username.appendChild(username1);
+        email1.appendChild(email);
+                
+        });
+            
+        }        
+
+getUser()
+
+    </script>
+</body>
+</html>
